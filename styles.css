@@ -1,0 +1,46 @@
+body {
+    background-color: #f0f8ff; /* Fondo suave, azul claro */
+    font-family: Arial, sans-serif; /* Fuente segura */
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    color: #333;
+}
+.logo {
+    margin: 20px auto;
+    width: 200px; /* Ajustable */
+    height: auto;
+    display: block;
+}
+h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+.menu-table {
+    margin: 0 auto; /* Centra la tabla */
+    border-collapse: collapse; /* Para un look limpio */
+    max-width: 800px;
+}
+.menu-table td {
+    padding: 10px;
+    text-align: center;
+}
+.button {
+    background-color: #ffb6c1; /* Rosa suave para kawaii */
+    color: #333;
+    padding: 20px;
+    border-radius: 20px; /* Bordes más redondos para lindo */
+    text-decoration: none;
+    display: block;
+    width: 150px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.button:hover, .button:active {
+    background-color: #ff69b4; /* Cambio a rosa más vivo */
+}
+.icon {
+    width: 60px; /* Un poco más grande para kawaii */
+    height: 60px;
+    margin-bottom: 10px;
+}
