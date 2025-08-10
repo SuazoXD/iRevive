@@ -2,100 +2,58 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Para responsividad en iPad -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iRevive - Menú Principal</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link al CSS separado -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="auth.js"></script>
 </head>
-<body>
-    <!-- Logo SVG mejorado: Más kawaii con carita linda en el 'i', flecha curva suave y texto estilizado -->
-    <svg class="logo" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-        <!-- Fondo redondo para el 'i' con carita kawaii -->
-        <circle cx="30" cy="30" r="25" fill="#add8e6" /> <!-- Azul claro lindo -->
-        <!-- Ojos grandes kawaii -->
-        <circle cx="20" cy="25" r="5" fill="#000" />
-        <circle cx="40" cy="25" r="5" fill="#000" />
-        <!-- Sonrisa -->
-        <path d="M20 40 Q30 45 40 40" stroke="#000" stroke-width="2" fill="none" />
-        <!-- Flecha de revival curva y suave -->
-        <path d="M5 30 Q30 5 55 30 Q30 55 5 30" stroke="#ff69b4" stroke-width="4" fill="none" /> <!-- Rosa kawaii -->
-        <!-- Texto 'Revive' con fuente redonda -->
-        <text x="70" y="40" font-family="Arial" font-size="32" fill="#ff69b4" font-weight="bold">Revive</text>
-    </svg>
+<body class="theme-rosa">
+    <img src="icons/logo.png" class="logo" alt="Logo iRevive Kawaii">
 
     <h1>¡Bienvenido a iRevive!</h1>
     
-    <!-- Menú en tabla centrada: 2x2 para 4 botones, se adapta en iPad -->
     <table class="menu-table">
         <tr>
             <td>
-                <!-- Botón Libros con icono kawaii (libro con carita) -->
                 <a href="libros.html" class="button">
-                    <svg class="icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Libro base -->
-                        <rect x="8" y="8" width="48" height="48" rx="5" fill="#ffd700" />
-                        <line x1="16" y1="20" x2="48" y2="20" stroke="#000" stroke-width="2" />
-                        <line x1="16" y1="28" x2="48" y2="28" stroke="#000" stroke-width="2" />
-                        <!-- Carita kawaii -->
-                        <circle cx="32" cy="40" r="8" fill="#fff" />
-                        <circle cx="28" cy="38" r="2" fill="#000" />
-                        <circle cx="36" cy="38" r="2" fill="#000" />
-                        <path d="M28 44 Q32 48 36 44" stroke="#000" stroke-width="2" fill="none" />
-                    </svg>
-                    Libros
+                    <img src="icons/libros.png" class="icon" alt="Icono Libros">
+                    <span>Libros</span>
                 </a>
             </td>
             <td>
-                <!-- Botón Mangas con icono kawaii (comic con carita) -->
                 <a href="mangas.html" class="button">
-                    <svg class="icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Comic base -->
-                        <rect x="8" y="8" width="48" height="48" rx="5" fill="#87ceeb" />
-                        <path d="M16 16 L48 16 L40 32 L16 32 Z" fill="#fff" />
-                        <!-- Carita kawaii -->
-                        <circle cx="32" cy="40" r="8" fill="#fff" />
-                        <circle cx="28" cy="38" r="2" fill="#000" />
-                        <circle cx="36" cy="38" r="2" fill="#000" />
-                        <path d="M28 44 Q32 48 36 44" stroke="#000" stroke-width="2" fill="none" />
-                    </svg>
-                    Mangas
+                    <img src="icons/manga.png" class="icon" alt="Icono Mangas">
+                    <span>Mangas</span>
                 </a>
             </td>
         </tr>
         <tr>
             <td>
-                <!-- Botón Videos YouTube con icono kawaii (play button con carita) -->
                 <a href="videos.html" class="button">
-                    <svg class="icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Play button base -->
-                        <circle cx="32" cy="32" r="24" fill="#ff0000" />
-                        <polygon points="24,16 24,48 48,32" fill="#fff" />
-                        <!-- Carita kawaii abajo -->
-                        <circle cx="32" cy="50" r="6" fill="#fff" />
-                        <circle cx="29" cy="48" r="1.5" fill="#000" />
-                        <circle cx="35" cy="48" r="1.5" fill="#000" />
-                        <path d="M29 52 Q32 54 35 52" stroke="#000" stroke-width="1.5" fill="none" />
-                    </svg>
-                    Videos YouTube
+                    <img src="icons/youtube.png" class="icon" alt="Icono YouTube">
+                    <span>Videos YouTube</span>
                 </a>
             </td>
             <td>
-                <!-- Botón Spotify con icono kawaii (nota musical con carita) -->
                 <a href="spotify.html" class="button">
-                    <svg class="icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Nota musical base -->
-                        <circle cx="32" cy="32" r="20" fill="#90ee90" />
-                        <rect x="28" y="8" width="8" height="24" fill="#90ee90" />
-                        <path d="M36 32 Q48 28 52 40" stroke="#000" stroke-width="4" fill="none" />
-                        <!-- Carita kawaii -->
-                        <circle cx="32" cy="32" r="10" fill="#fff" />
-                        <circle cx="28" cy="30" r="2" fill="#000" />
-                        <circle cx="36" cy="30" r="2" fill="#000" />
-                        <path d="M28 36 Q32 40 36 36" stroke="#000" stroke-width="2" fill="none" />
-                    </svg>
-                    Conectar Spotify
+                    <img src="icons/spotify.png" class="icon" alt="Icono Spotify">
+                    <span>Conectar Spotify</span>
                 </a>
             </td>
         </tr>
     </table>
+
+    <div class="themes-section">
+        <h2>🎨</h2>
+        <select id="theme-selector" onchange="changeTheme(this.value)">
+            <option value="rosa">🔴</option>
+            <option value="azul">🔵</option>
+            <option value="verde">🟢</option>
+            <option value="morado">🟣</option>
+            <option value="negro">⚫</option>
+        </select>
+    </div>
+
+    <script src="themes.js"></script>
 </body>
 </html>

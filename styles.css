@@ -1,14 +1,15 @@
 body {
-    background-color: #f0f8ff; /* Fondo suave, azul claro */
-    font-family: Arial, sans-serif; /* Fuente segura */
     margin: 0;
     padding: 20px;
     text-align: center;
     color: #333;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Fallback */
+    transition: background 0.5s, color 0.5s;
 }
 .logo {
     margin: 20px auto;
-    width: 200px; /* Ajustable */
+    width: 200px;
     height: auto;
     display: block;
 }
@@ -17,8 +18,8 @@ h1 {
     margin-bottom: 30px;
 }
 .menu-table {
-    margin: 0 auto; /* Centra la tabla */
-    border-collapse: collapse; /* Para un look limpio */
+    margin: 0 auto;
+    border-collapse: collapse;
     max-width: 800px;
 }
 .menu-table td {
@@ -26,21 +27,108 @@ h1 {
     text-align: center;
 }
 .button {
-    background-color: #ffb6c1; /* Rosa suave para kawaii */
-    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
     padding: 20px;
-    border-radius: 20px; /* Bordes más redondos para lindo */
+    border-radius: 25px; /* Más redondeado para vintage */
     text-decoration: none;
-    display: block;
     width: 150px;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4), 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.3); /* Sombra profunda + brillo interno */
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    border: 1px solid rgba(255,255,255,0.9); /* Borde más brillante */
 }
 .button:hover, .button:active {
-    background-color: #ff69b4; /* Cambio a rosa más vivo */
+    box-shadow: 0 12px 24px rgba(0,0,0,0.5), 0 14px 40px rgba(0,0,0,0.35), inset 0 1px 3px rgba(255,255,255,0.4);
+    transform: translateY(-2px);
 }
 .icon {
-    width: 60px; /* Un poco más grande para kawaii */
+    width: 60px;
     height: 60px;
     margin-bottom: 10px;
+}
+.button span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Temas Día con gradientes */
+body.theme-rosa {
+    background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+    color: #333;
+}
+body.theme-rosa .button {
+    background: linear-gradient(to bottom, rgba(255,182,193,0.6), rgba(255,105,180,0.6));
+}
+body.theme-rosa .button:hover {
+    background: linear-gradient(to bottom, rgba(255,105,180,0.6), rgba(255,182,193,0.6));
+}
+
+body.theme-azul {
+    background: linear-gradient(to bottom, #e6f3ff, #d1e7ff);
+    color: #333;
+}
+body.theme-azul .button {
+    background: linear-gradient(to bottom, rgba(173,216,230,0.6), rgba(33,150,243,0.6));
+}
+body.theme-azul .button:hover {
+    background: linear-gradient(to bottom, rgba(33,150,243,0.6), rgba(173,216,230,0.6));
+}
+
+body.theme-verde {
+    background: linear-gradient(to bottom, #e6ffe6, #ccffcc);
+    color: #333;
+}
+body.theme-verde .button {
+    background: linear-gradient(to bottom, rgba(144,238,144,0.6), rgba(76,175,80,0.6));
+}
+body.theme-verde .button:hover {
+    background: linear-gradient(to bottom, rgba(76,175,80,0.6), rgba(144,238,144,0.6));
+}
+
+/* Temas Noche con gradientes */
+body.theme-morado {
+    background: linear-gradient(to bottom, #2e1a47, #4b306a);
+    color: #f0f0f0;
+}
+body.theme-morado .button {
+    background: linear-gradient(to bottom, rgba(216,191,216,0.6), rgba(147,112,219,0.6));
+}
+body.theme-morado .button:hover {
+    background: linear-gradient(to bottom, rgba(147,112,219,0.6), rgba(216,191,216,0.6));
+}
+
+body.theme-negro {
+    background: linear-gradient(to bottom, #1a1a1a, #333333);
+    color: #f0f0f0;
+}
+body.theme-negro .button {
+    background: linear-gradient(to bottom, rgba(85,85,85,0.6), rgba(34,34,34,0.6));
+}
+body.theme-negro .button:hover {
+    background: linear-gradient(to bottom, rgba(34,34,34,0.6), rgba(85,85,85,0.6));
+}
+
+/* Selector de temas desplegable */
+.themes-section {
+    margin-top: 40px;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+}
+.themes-section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.themes-section select {
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(200,200,200,0.8)); /* Glassy */
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    cursor: pointer;
+    width: 100px;
 }
