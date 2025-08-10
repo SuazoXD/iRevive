@@ -3,57 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iRevive - Menú Principal</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="auth.js"></script>
+    <title>Biblioteca iRevive</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f0f0; margin: 0; padding: 20px; }
+        .logo { width: 200px; margin: 20px auto; }
+        .botones { margin: 20px; }
+        button { padding: 10px 20px; margin: 10px; font-size: 16px; cursor: pointer; }
+    </style>
 </head>
-<body class="theme-rosa">
-    <img src="icons/logo.png" class="logo" alt="Logo iRevive Kawaii">
-
-    <h1>¡Bienvenido a iRevive!</h1>
-    
-    <table class="menu-table">
-        <tr>
-            <td>
-                <a href="libros.html" class="button">
-                    <img src="icons/libros.png" class="icon" alt="Icono Libros">
-                    <span>Libros</span>
-                </a>
-            </td>
-            <td>
-                <a href="mangas.html" class="button">
-                    <img src="icons/manga.png" class="icon" alt="Icono Mangas">
-                    <span>Mangas</span>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="videos.html" class="button">
-                    <img src="icons/youtube.png" class="icon" alt="Icono YouTube">
-                    <span>Videos YouTube</span>
-                </a>
-            </td>
-            <td>
-                <a href="spotify.html" class="button">
-                    <img src="icons/spotify.png" class="icon" alt="Icono Spotify">
-                    <span>Conectar Spotify</span>
-                </a>
-            </td>
-        </tr>
-    </table>
-
-    <div class="themes-section">
-        <h2>🎨</h2>
-        <select id="theme-selector" onchange="changeTheme(this.value)">
-            <option value="rosa">🔴</option>
-            <option value="azul">🔵</option>
-            <option value="verde">🟢</option>
-            <option value="morado">🟣</option>
-            <option value="negro">⚫</option>
-        </select>
+<body>
+    <img src="ico/logo.png" alt="Logo iRevive" class="logo"> <!-- Sube tu logo aquí -->
+    <h1>Bienvenido a la Biblioteca iRevive</h1>
+    <div class="botones">
+        <button onclick="window.location.href='mangas.html'">Ir a Mangas</button>
+        <button onclick="window.location.href='libros.html'">Ir a Libros</button>
     </div>
-
-    <script src="themes.js"></script>
+    <p>Usa los botones para navegar. Compatible con iOS 9.</p>
 </body>
 </html>

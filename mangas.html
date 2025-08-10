@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mangas - Biblioteca iRevive</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 20px; }
+        .biblioteca { width: 100%; height: 600px; border: none; }
+        .visor { width: 100%; height: 400px; display: none; border: 1px solid #ccc; margin-top: 20px; }
+        .progreso { margin-top: 10px; }
+        button { padding: 10px; cursor: pointer; }
+        .icono { width: 50px; float: left; margin-right: 10px; } /* Para íconos personalizados */
+    </style>
+    <script>
+        // Función para abrir visor y rastrear progreso (compatible con iOS 9)
+        function abrirVisor(fileId) {
+            var visor = document.getElementById('visor');
+            visor.src = 'https://drive.google.com/file/d/' + fileId + '/preview';
+            visor.style.display = 'block';
+            
+            // Cargar progreso de localStorage
+            var progreso = localStorage.getItem('progreso_manga_' + fileId);
+            if (progreso) {
+                alert('Continuando desde la página/imagen ' + progreso);
+                // Aquí podrías scrollar o ajustar el visor, pero con iframe es limitado; asume manual
+            }
+        }
+        
+        // Guardar progreso (ej. al clickear botón)
+        function guardarProgreso(fileId) {
+            var pagina = document.getElementById('pagina-actual').value;
+            if (pagina) {
+                localStorage.setItem('progreso_manga_' + fileId, pagina);
+                alert('Progreso guardado: ' + pagina);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Biblioteca de Mangas</h1>
+    <p>Explora la carpeta como una biblioteca. Click en un manga para leer (abre en visor). Usa íconos personalizados de /ico/manga/ si subes imágenes.</p>
+    <!-- Embed de la carpeta en estilo lista (biblioteca) -->
+    <iframe src="https://drive.google.com/embeddedfolderview?id=1ZbUkUjKSAl9fc3Ud3HdY66aR8QIE4Yv4#list" class="biblioteca"></iframe>
+    <!-- Ejemplo de ícono personalizado (edita con tus archivos) -->
+    <div><img src="ico/manga/icon-manga1.png" alt="Icono Manga" class="icono"> Manga Ejemplo</div>
+    
+    <!-- Visor para leer (abre al clickear en Drive, pero simulado aquí para progreso) -->
+    <div class="visor-container">
+        <iframe id="visor" class="visor"></iframe>
+        <div class="progreso">
+            <input type="number" id="pagina-actual" placeholder="Página actual">
+            <button onclick="guardarProgreso('FILE_ID_EJEMPLO')">Guardar Progreso</button> <!-- Reemplaza FILE_ID_EJEMPLO con IDs reales de archivos -->
+        </div>
+    </div>
+    <button onclick="window.location.href='index.html'">Volver a Principal</button>
+    <p>Nota: Para progreso real, reemplaza 'FILE_ID_EJEMPLO' con IDs de archivos de Drive. El tracking es manual por limitaciones de iframes.</p>
+</body>
+</html>

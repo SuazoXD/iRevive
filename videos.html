@@ -12,64 +12,45 @@
 
     <h1>Videos YouTube</h1>
     
-    <!-- Input para ID/URL de video y reproductor -->
-    <div class="player-container">
-        <form id="video-form">
-            <input type="text" id="video-id" placeholder="Ingresa ID o URL de YouTube..." required>
-            <button type="button" class="search-button" onclick="playVideo()">Reproducir</button>
-        </form>
-        <div id="video-player" class="video-container"></div>
-        <p>Ingresa el ID (ej: dQw4w9WgXcQ) o URL completa para reproducir en modo antiguo. Si ves "no disponible", intenta con videos antiguos y toca el video para jugar.</p>
+    <!-- Lista de videos extraídos por IA (sin búsqueda externa) -->
+    <div class="video-list-container">
+        <h2>Selecciona un video</h2>
+        <select id="video-selector" onchange="playSelectedVideo()">
+            <option value="">Elige un video...</option>
+            <option value="tpiyEe_CqB4" data-title="Cute and Funny Cat Videos to Keep You Smiling!" data-author="Rufus">Cute and Funny Cat Videos to Keep You Smiling! - Rufus</option>
+            <option value="YjDKzPo51V0" data-title="Cats use 100 cuteness Funny Cats Videos" data-author="Unknown">Cats use 100 cuteness Funny Cats Videos - Unknown</option>
+            <option value="C6RUp21s6BQ" data-title="Cute and Funny Cat Videos Compilation #9 | Aww Animals" data-author="Aww Animals">Cute and Funny Cat Videos Compilation #9 | Aww Animals - Aww Animals</option>
+            <option value="6mOcNbLXhqk" data-title="The CUTEST and FUNNIEST KITTENS and CATS You'll want more!" data-author="Unknown">The CUTEST and FUNNIEST KITTENS and CATS You'll want more! - Unknown</option>
+            <option value="RqzZHRutxCE" data-title="The most polite Cat in the world Funny and Cute Cat Ever!" data-author="Unknown">The most polite Cat in the world Funny and Cute Cat Ever! - Unknown</option>
+            <option value="5hDxmBUtWMQ" data-title="10 minutes of adorable cats and human videos to keep you smiling" data-author="Unknown">10 minutes of adorable cats and human videos to keep you smiling - Unknown</option>
+            <option value="E9iP8jdtYZ0" data-title="Baby Cats - Cute and Funny Cat Videos Compilation #60" data-author="Unknown">Baby Cats - Cute and Funny Cat Videos Compilation #60 - Unknown</option>
+        </select>
+        <div id="video-info"></div>
+        <div id="video-player" class="video-container" style="display: none;"></div>
     </div>
 
-    <!-- JS para extraer ID y embeber iframe vintage con playsinline -->
+    <!-- JS para reproducir video seleccionado y mostrar info -->
     <script>
-        function playVideo() {
-            var input = document.getElementById('video-id').value.trim();
-            var videoId = input.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/) ? input.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/)[1] : input;
+        function playSelectedVideo() {
+            var select = document.getElementById('video-selector');
+            var videoId = select.value;
+            var title = select.options[select.selectedIndex].getAttribute('data-title');
+            var author = select.options[select.selectedIndex].getAttribute('data-author');
+            
             if (videoId) {
                 var embedUrl = 'https://www.youtube.com/embed/' + videoId + '?fs=0&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0&playsinline=1';
                 document.getElementById('video-player').innerHTML = '<iframe width="320" height="180" src="' + embedUrl + '" frameborder="2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                document.getElementById('video-player').style.display = 'block';
+                document.getElementById('video-info').innerHTML = '<p>ID: ' + videoId + '<br>Autor: ' + author + '<br>Título: ' + title + '</p>';
+                // Ocultar lista después de selección
+                select.style.display = 'none';
             } else {
-                alert('Ingresa un ID o URL válido de YouTube.');
+                document.getElementById('video-player').style.display = 'none';
+                document.getElementById('video-info').innerHTML = '';
+                select.style.display = 'block';
             }
         }
     </script>
-
-    <!-- Lista de videos ejemplo extraídos por IA (de búsqueda "gatos lindos") -->
-    <div class="example-videos">
-        <h2>Videos Ejemplo (extraídos por IA)</h2>
-        <table class="video-table">
-            <tr>
-                <td>
-                    <div class="video-container">
-                        <iframe width="320" height="180" src="https://www.youtube.com/embed/wv_dJvjuC04?fs=0&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0&playsinline=1" frameborder="2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <p>Maullidos de Gatos</p>
-                    </div>
-                </td>
-                <td>
-                    <div class="video-container">
-                        <iframe width="320" height="180" src="https://www.youtube.com/embed/qHGtCC0RC30?fs=0&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0&playsinline=1" frameborder="2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <p>Gatito en Piscina</p>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="video-container">
-                        <iframe width="320" height="180" src="https://www.youtube.com/embed/MNXj46NjKLc?fs=0&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0&playsinline=1" frameborder="2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <p>24 Horas con Gatitos</p>
-                    </div>
-                </td>
-                <td>
-                    <div class="video-container">
-                        <iframe width="320" height="180" src="https://www.youtube.com/embed/3aOxs3tTvP0?fs=0&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0&playsinline=1" frameborder="2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <p>Gatito en Carnaval</p>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
 
     <!-- Navegación inferior -->
     <div class="nav-section">
