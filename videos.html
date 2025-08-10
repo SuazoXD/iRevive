@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iRevive - Videos YouTube</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="auth.js"></script>
+</head>
+<body class="theme-rosa">
+    <img src="icons/logo.png" class="logo" alt="Logo iRevive Kawaii">
+
+    <h1>Videos YouTube</h1>
+    
+    <!-- Input para ID/URL de video y reproductor -->
+    <div class="player-container">
+        <form id="video-form">
+            <input type="text" id="video-id" placeholder="Ingresa ID o URL de YouTube..." required>
+            <button type="button" class="search-button" onclick="playVideo()">Reproducir</button>
+        </form>
+        <div id="video-player" class="video-container"></div>
+        <p>Ingresa el ID (ej: dQw4w9WgXcQ) o URL completa para reproducir en modo antiguo. Si ves "no disponible", intenta con videos antiguos y toca el video para jugar.</p>
+    </div>
+
+    <!-- JS para extraer ID y embeber iframe vintage con playsinline -->
+    <script>
+        function playVideo() {
+            var input = document.getElementById('video-id').value.trim();
+            var videoId = input.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/) ? input.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/)[1] : input;
+            if (videoId) {
+                var embedUrl = 'https://www.youtube.com/embed/' + videoId + '?fs=0&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0&playsinline=1';
+                document.getElementById('video-player').innerHTML = '<iframe width="320" height="180" src="' + embedUrl + '" frameborder="2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+            } else {
+                alert('Ingresa un ID o URL válido de YouTube.');
+            }
+        }
+    </script>
+
+    <!-- Lista de videos ejemplo extraídos por IA (de búsqueda "gatos lindos") -->
+    <div class="example-videos">
+        <h2>Videos Ejemplo (extraídos por IA)</h2>
+        <table class="video-table">
+            <tr>
+                <td>
+                    <div class="video-container">
+                        <iframe width="320" height="180" src="https://www.youtube.com/embed/wv_dJvjuC04?fs=0&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0&playsinline=1" frameborder="2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p>Maullidos de Gatos</p>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <iframe width="320" height="180" src="https://www.youtube.com/embed/qHGtCC0RC30?fs=0&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0&playsinline=1" frameborder="2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p>Gatito en Piscina</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="video-container">
+                        <iframe width="320" height="180" src="https://www.youtube.com/embed/MNXj46NjKLc?fs=0&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0&playsinline=1" frameborder="2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p>24 Horas con Gatitos</p>
+                    </div>
+                </td>
+                <td>
+                    <div class="video-container">
+                        <iframe width="320" height="180" src="https://www.youtube.com/embed/3aOxs3tTvP0?fs=0&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0&playsinline=1" frameborder="2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p>Gatito en Carnaval</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Navegación inferior -->
+    <div class="nav-section">
+        <h2>🔗 Navegación</h2>
+        <table class="nav-table">
+            <tr>
+                <td>
+                    <a href="libros.html" class="nav-button">
+                        <img src="icons/libros.png" class="nav-icon" alt="Icono Libros">
+                        <span>Libros</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="mangas.html" class="nav-button">
+                        <img src="icons/manga.png" class="nav-icon" alt="Icono Mangas">
+                        <span>Mangas</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="videos.html" class="nav-button">
+                        <img src="icons/youtube.png" class="nav-icon" alt="Icono YouTube">
+                        <span>YouTube</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="spotify.html" class="nav-button">
+                        <img src="icons/spotify.png" class="nav-icon" alt="Icono Spotify">
+                        <span>Spotify</span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Selector de temas -->
+    <div class="themes-section">
+        <h2>🎨</h2>
+        <select id="theme-selector" onchange="changeTheme(this.value)">
+            <option value="rosa">🔴</option>
+            <option value="azul">🔵</option>
+            <option value="verde">🟢</option>
+            <option value="morado">🟣</option>
+            <option value="negro">⚫</option>
+        </select>
+    </div>
+
+    <script src="themes.js"></script>
+</body>
+</html>
