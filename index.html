@@ -2,21 +2,103 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Página Web Básica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Para responsividad en iPad -->
+    <title>iRevive - Menú Principal</title>
     <style>
         body {
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-            text-align: center;
+            background-color: #f0f8ff; /* Fondo suave, azul claro */
+            font-family: Arial, sans-serif; /* Fuente segura */
+            margin: 0;
             padding: 20px;
+            text-align: center;
+            color: #333;
+        }
+        .logo {
+            margin: 20px auto;
+            width: 200px; /* Ajustable */
+            height: auto;
+        }
+        .menu {
+            display: flex; /* Flexbox para layout horizontal/vertical responsivo */
+            flex-wrap: wrap; /* Se envuelve en pantallas pequeñas */
+            justify-content: center;
+            gap: 20px; /* Espacio entre botones */
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .button {
+            background-color: #4CAF50; /* Verde atractivo */
+            color: white;
+            padding: 20px;
+            border-radius: 10px; /* Bordes redondeados */
+            text-decoration: none; /* Para enlaces */
+            width: 150px; /* Tamaño fijo para simetría */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background-color 0.3s ease; /* Transición suave, compatible */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra ligera para atractivo */
+        }
+        .button:hover, .button:active {
+            background-color: #45a049; /* Cambio al interactuar */
+        }
+        .icon {
+            width: 50px; /* Tamaño de iconos */
+            height: 50px;
+            margin-bottom: 10px;
+            fill: white; /* Color de SVG */
         }
         h1 {
-            color: #333;
+            font-size: 24px;
+            margin-bottom: 30px;
         }
     </style>
 </head>
 <body>
-    <h1>¡Hola! Esta es mi página web probando en Safari 9.0</h1>
-    <p>Funciona en iOS 9.3.5 y modelos antiguos de iPad.</p>
+    <!-- Logo SVG vectorial -->
+    <svg class="logo" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+        <!-- Fondo circular para el 'i' con flecha de revival -->
+        <circle cx="25" cy="25" r="20" fill="#2196F3" /> <!-- Azul para 'i' -->
+        <path d="M25 5 L25 20 M25 30 L25 45" stroke="white" stroke-width="4" /> <!-- La 'i' simple -->
+        <path d="M5 25 Q25 5 45 25 Q25 45 5 25" stroke="#4CAF50" stroke-width="3" fill="none" /> <!-- Flecha circular de revival, verde -->
+        <!-- Texto 'Revive' -->
+        <text x="60" y="35" font-family="Arial" font-size="30" fill="#333">Revive</text>
+    </svg>
+
+    <h1>¡Bienvenido a iRevive!</h1>
+    
+    <div class="menu">
+        <!-- Botón Libros -->
+        <a href="libros.html" class="button"> <!-- Enlace a página futura -->
+            <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6H2v14a2 2 0 002 2h14v-2H4V6zm16-4H8a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2zm-2 14H8V4h12v12z" />
+            </svg>
+            Libros
+        </a>
+        
+        <!-- Botón Mangas -->
+        <a href="mangas.html" class="button">
+            <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm0 16H5V5h14v14zm-7-2h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z" />
+            </svg>
+            Mangas
+        </a>
+        
+        <!-- Botón Videos de YouTube -->
+        <a href="videos.html" class="button">
+            <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 16.5l6-4.5-6-4.5v9zM5 20h14a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v14a1 1 0 001 1zm14.5 1.5H4.5V2.5h15v19z" />
+            </svg>
+            Videos YouTube
+        </a>
+        
+        <!-- Botón Conectar a Spotify -->
+        <a href="spotify.html" class="button">
+            <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.88-6.35c-.2 0-.4-.08-.53-.21-.63-.63-1.7-.95-2.7-.95-1.3 0-2.3.6-2.8 1.1-.2.2-.5.2-.7 0s-.2-.5 0-.7c.7-.6 1.9-1.3 3.5-1.3 1.2 0 2.5.4 3.4 1.3.2.2.2.5 0 .7-.13.13-.33.21-.53.21zm1.03-2.8c-.2 0-.4-.08-.55-.23-.8-.8-2.1-1.2-3.4-1.2-1.6 0-3 .8-3.7 1.5-.2.2-.5.2-.7 0s-.2-.5 0-.7c.9-.8 2.5-1.7 4.4-1.7 1.4 0 3 .5 4.1 1.6.2.2.2.5 0 .7-.15.15-.35.23-.55.23zm1.07-2.85c-.3 0-.5-.1-.7-.3-.9-.9-2.5-1.4-4-1.4-1.9 0-3.6 1-4.4 1.8-.2.2-.5.2-.7 0s-.2-.5 0-.7c1-1 3-2 5.1-2 1.7 0 3.4.6 4.7 1.9.2.2.2.5 0 .7-.2.2-.4.3-.7.3z" />
+            </svg>
+            Conectar Spotify
+        </a>
+    </div>
 </body>
 </html>
