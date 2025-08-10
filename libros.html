@@ -3,57 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libros - Biblioteca iRevive</title>
+    <title>Libros - iRevive</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 20px; }
-        .biblioteca { width: 100%; height: 600px; border: none; }
-        .visor { width: 100%; height: 400px; display: none; border: 1px solid #ccc; margin-top: 20px; }
-        .progreso { margin-top: 10px; }
-        button { padding: 10px; cursor: pointer; }
-        .icono { width: 50px; float: left; margin-right: 10px; } /* Para íconos personalizados */
+        body { font-family: -apple-system, sans-serif; background: #fff; color: #333; margin: 0; padding: 20px; }
+        h1 { font-size: 22px; font-weight: 400; margin-bottom: 20px; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 15px; }
+        a { color: #007aff; text-decoration: none; display: block; padding: 10px; border-bottom: 1px solid #eee; }
+        .icono { width: 40px; vertical-align: middle; margin-right: 10px; }
+        .progreso { font-size: 12px; color: #999; }
+        button { background: #f0f0f0; border: none; padding: 10px 20px; margin-top: 20px; cursor: pointer; border-radius: 5px; }
     </style>
     <script>
-        // Función para abrir visor y rastrear progreso (compatible con iOS 9)
-        function abrirVisor(fileId) {
-            var visor = document.getElementById('visor');
-            visor.src = 'https://drive.google.com/file/d/' + fileId + '/preview';
-            visor.style.display = 'block';
-            
-            // Cargar progreso de localStorage
-            var progreso = localStorage.getItem('progreso_libro_' + fileId);
-            if (progreso) {
-                alert('Continuando desde la página ' + progreso);
-                // Aquí podrías scrollar o ajustar el visor, pero con iframe es limitado; asume manual
-            }
+        var apiKey = 'TU_API_KEY'; // Reemplaza con tu API key
+        var folderId = '1ToBUTJXyxNWO4pwoCsDHDUU5uRoX97zw'; // ID de carpeta libros
+
+        function listarArchivos() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://www.googleapis.com/drive/v3/files?q=\'' + folderId + '\'+in+parents&key=' + apiKey + '&fields=files(id,name,mimeType)');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    var lista = document.getElementById('lista-libros');
+                    data.files.forEach(function(file) {
+                        var li = document.createElement('li');
+                        var a = document.createElement('a');
+                        a.href = 'https://drive.google.com/file/d/' + file.id + '/view';
+                        a.target = '_blank';
+                        a.innerHTML = '<img src="ico/libros/icon-libro1.png" alt="Icono" class="icono">' + file.name; // Usa tus íconos de /ico/libros/
+                        li.appendChild(a);
+                        
+                        // Progreso
+                        var prog = localStorage.getItem('progreso_libro_' + file.id);
+                        if (prog) {
+                            var span = document.createElement('span');
+                            span.className = 'progreso';
+                            span.textContent = ' (Progreso: ' + prog + ')';
+                            li.appendChild(span);
+                        }
+                        
+                        // Guardar progreso
+                        var input = document.createElement('input');
+                        input.type = 'number';
+                        input.placeholder = 'Página';
+                        input.style.width = '50px';
+                        var btn = document.createElement('button');
+                        btn.textContent = 'Guardar';
+                        btn.onclick = (function(id) { return function() {
+                            var val = input.value;
+                            if (val) localStorage.setItem('progreso_libro_' + id, val);
+                        }; })(file.id);
+                        li.appendChild(input);
+                        li.appendChild(btn);
+                        
+                        lista.appendChild(li);
+                    });
+                }
+            };
+            xhr.send();
         }
-        
-        // Guardar progreso (ej. al clickear botón)
-        function guardarProgreso(fileId) {
-            var pagina = document.getElementById('pagina-actual').value;
-            if (pagina) {
-                localStorage.setItem('progreso_libro_' + fileId, pagina);
-                alert('Progreso guardado: ' + pagina);
-            }
-        }
+        window.onload = listarArchivos;
     </script>
 </head>
 <body>
-    <h1>Biblioteca de Libros</h1>
-    <p>Explora la carpeta como una biblioteca. Click en un libro para leer (abre en visor). Usa íconos personalizados de /ico/libros/ si subes imágenes.</p>
-    <!-- Embed de la carpeta en estilo lista (biblioteca) -->
-    <iframe src="https://drive.google.com/embeddedfolderview?id=1ToBUTJXyxNWO4pwoCsDHDUU5uRoX97zw#list" class="biblioteca"></iframe>
-    <!-- Ejemplo de ícono personalizado (edita con tus archivos) -->
-    <div><img src="ico/libros/icon-libro1.png" alt="Icono Libro" class="icono"> Libro Ejemplo</div>
-    
-    <!-- Visor para leer (abre al clickear en Drive, pero simulado aquí para progreso) -->
-    <div class="visor-container">
-        <iframe id="visor" class="visor"></iframe>
-        <div class="progreso">
-            <input type="number" id="pagina-actual" placeholder="Página actual">
-            <button onclick="guardarProgreso('FILE_ID_EJEMPLO')">Guardar Progreso</button> <!-- Reemplaza FILE_ID_EJEMPLO con IDs reales de archivos -->
-        </div>
-    </div>
-    <button onclick="window.location.href='index.html'">Volver a Principal</button>
-    <p>Nota: Para progreso real, reemplaza 'FILE_ID_EJEMPLO' con IDs de archivos de Drive. El tracking es manual por limitaciones de iframes.</p>
+    <h1>Libros</h1>
+    <ul id="lista-libros"></ul>
+    <button onclick="window.location.href='index.html'">Volver</button>
 </body>
 </html>
