@@ -1,0 +1,11 @@
+{
+  "name": "iRevive",
+  "short_name": "iRevive",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#222222",
+  "icons": [
+    { "src": "icons/logo.png", "sizes": "192x192", "type": "image/png" }
+  ]
+}

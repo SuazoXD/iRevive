@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<title>iRevive — YouTube</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="theme-day">
+<header class="topbar">
+  <button id="backBtn4" class="icon-btn">←</button>
+  <h1>YouTube</h1>
+  <button id="hamburger5" class="icon-btn">≡</button>
+</header>
+
+<nav id="nav5" class="nav-hamburger" aria-hidden="true">
+  <div class="nav-header">
+    <div class="logo"><img src="icons/logo.png" alt="iRevive"></div>
+    <button id="themeToggle5" class="icon-btn">☀️</button>
+  </div>
+  <input id="searchYouTube" type="search" placeholder="Buscar video...">
+  <ul class="nav-links">
+    <li><a href="index.html">Menú</a></li>
+  </ul>
+</nav>
+
+<main class="content">
+  <section class="search-area">
+    <input id="ytQuery" placeholder="Buscar en YouTube..." />
+    <button id="ytSearchBtn">Buscar</button>
+  </section>
+  <section id="ytResults" class="list">
+    <p>Resultados de YouTube aparecerán aquí.</p>
+  </section>
+  <div id="ytPlayer" class="video-player" aria-hidden="true"></div>
+</main>
+
+<footer class="footer">iRevive — YouTube</footer>
+
+<script src="js/spotify_youtube.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

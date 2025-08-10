@@ -1,73 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mangas - iRevive</title>
-    <style>
-        body { font-family: -apple-system, sans-serif; background: #fff; color: #333; margin: 0; padding: 20px; }
-        h1 { font-size: 22px; font-weight: 400; margin-bottom: 20px; }
-        ul { list-style: none; padding: 0; }
-        li { margin-bottom: 15px; }
-        a { color: #007aff; text-decoration: none; display: block; padding: 10px; border-bottom: 1px solid #eee; }
-        .icono { width: 40px; vertical-align: middle; margin-right: 10px; }
-        .progreso { font-size: 12px; color: #999; }
-        button { background: #f0f0f0; border: none; padding: 10px 20px; margin-top: 20px; cursor: pointer; border-radius: 5px; }
-    </style>
-    <script>
-        var apiKey = 'TU_API_KEY'; // Reemplaza con tu API key
-        var folderId = '1ZbUkUjKSAl9fc3Ud3HdY66aR8QIE4Yv4'; // ID de carpeta mangas
-
-        function listarArchivos() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'https://www.googleapis.com/drive/v3/files?q=\'' + folderId + '\'+in+parents&key=' + apiKey + '&fields=files(id,name,mimeType)');
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    var data = JSON.parse(xhr.responseText);
-                    var lista = document.getElementById('lista-mangas');
-                    data.files.forEach(function(file) {
-                        var li = document.createElement('li');
-                        var a = document.createElement('a');
-                        a.href = 'https://drive.google.com/file/d/' + file.id + '/view';
-                        a.target = '_blank';
-                        a.innerHTML = '<img src="ico/manga/icon-manga1.png" alt="Icono" class="icono">' + file.name; // Usa tus íconos de /ico/manga/
-                        li.appendChild(a);
-                        
-                        // Progreso
-                        var prog = localStorage.getItem('progreso_manga_' + file.id);
-                        if (prog) {
-                            var span = document.createElement('span');
-                            span.className = 'progreso';
-                            span.textContent = ' (Progreso: ' + prog + ')';
-                            li.appendChild(span);
-                        }
-                        
-                        // Guardar progreso (manual, por simplicidad)
-                        var input = document.createElement('input');
-                        input.type = 'number';
-                        input.placeholder = 'Página';
-                        input.style.width = '50px';
-                        var btn = document.createElement('button');
-                        btn.textContent = 'Guardar';
-                        btn.onclick = (function(id) { return function() {
-                            var val = input.value;
-                            if (val) localStorage.setItem('progreso_manga_' + id, val);
-                        }; })(file.id);
-                        li.appendChild(input);
-                        li.appendChild(btn);
-                        
-                        lista.appendChild(li);
-                    });
-                }
-            };
-            xhr.send();
-        }
-        window.onload = listarArchivos;
-    </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<title>iRevive — Mangas</title>
+<script src="js/config.js"></script>
+<script src="js/drive_fetch.js"></script>
+<script src="js/reader.js"></script>
+<script src="js/app.js"></script>
+<link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-    <h1>Mangas</h1>
-    <ul id="lista-mangas"></ul>
-    <button onclick="window.location.href='index.html'">Volver</button>
+<body class="theme-day">
+<header class="topbar">
+  <button id="backBtn2" class="icon-btn">←</button>
+  <h1>Mangas</h1>
+  <button id="hamburger3" class="icon-btn">≡</button>
+</header>
+
+<nav id="nav3" class="nav-hamburger" aria-hidden="true">
+  <div class="nav-header">
+    <div class="logo"><img src="icons/logo.png" alt="iRevive"><span class="logo-fallback">i</span></div>
+    <button id="themeToggle3" class="icon-btn">☀️</button>
+  </div>
+  <input id="searchMangas" type="search" placeholder="Buscar manga...">
+  <ul class="nav-links">
+    <li><a href="index.html">Menú</a></li>
+    <li><a href="libros.html">Libros</a></li>
+  </ul>
+</nav>
+
+<main class="content">
+  <section id="mangasList" class="list">
+    <p>Cargando lista de mangas...</p>
+  </section>
+  <div id="readerPanel" class="reader-panel" aria-hidden="true">
+    <!-- reader content injected here -->
+  </div>
+</main>
+
+<footer class="footer">iRevive — Mangas</footer>
+
+<script>
+var CONFIG = {
+  DRIVE_FOLDER_ID: "1ZbUkUjKSAl9fc3Ud3HdY66aR8QIE4Yv4",
+  API_KEY: ""
+};
+</script>
+
+<script src="js/drive_fetch.js"></script>
+<script src="js/reader.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

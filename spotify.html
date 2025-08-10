@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<title>iRevive — Spotify</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="theme-day">
+<header class="topbar">
+  <button id="backBtn3" class="icon-btn">←</button>
+  <h1>Spotify</h1>
+  <button id="hamburger4" class="icon-btn">≡</button>
+</header>
+
+<nav id="nav4" class="nav-hamburger" aria-hidden="true">
+  <div class="nav-header">
+    <div class="logo"><img src="icons/logo.png" alt="iRevive"></div>
+    <button id="themeToggle4" class="icon-btn">☀️</button>
+  </div>
+  <input id="searchSpotify" type="search" placeholder="Buscar pista/playlists...">
+  <ul class="nav-links">
+    <li><a href="index.html">Menú</a></li>
+  </ul>
+</nav>
+
+<main class="content">
+  <section class="search-area">
+    <input id="spotifyQuery" placeholder="Buscar..." />
+    <button id="spotifySearchBtn">Buscar</button>
+  </section>
+  <section id="spotifyResults" class="list">
+    <p>Resultados aparecerán aquí. Si Spotify no permite reproducción directa en iOS9, ofrecemos enlaces para abrir en app.</p>
+  </section>
+</main>
+
+<footer class="footer">iRevive — Spotify</footer>
+
+<script src="js/spotify_youtube.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

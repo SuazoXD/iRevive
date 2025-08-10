@@ -1,23 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca iRevive</title>
-    <style>
-        body { font-family: -apple-system, sans-serif; background: #fff; color: #333; margin: 0; padding: 40px; text-align: center; }
-        .logo { max-width: 150px; margin-bottom: 40px; }
-        h1 { font-size: 24px; font-weight: 400; margin-bottom: 40px; }
-        .botones button { background: #f0f0f0; border: none; padding: 15px 30px; margin: 10px; font-size: 16px; cursor: pointer; border-radius: 5px; transition: background 0.3s; }
-        .botones button:hover { background: #e0e0e0; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>iRevive — Menú</title>
+<script src="js/config.js"></script>
+<script src="js/drive_fetch.js"></script>
+<script src="js/reader.js"></script>
+<script src="js/app.js"></script>
+
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/logo.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="iRevive">
+
+<link rel="stylesheet" href="css/styles.css">
+<style>
+/* small override for index specific */
+.main-grid{display:block;padding:18px;}
+.menu-buttons{display:flex;flex-wrap:wrap;justify-content:space-around;align-items:center;}
+.btn-card{width:44%;min-width:140px;margin:6px;padding:14px;border-radius:12px;text-align:center;box-shadow:0 2px 0 rgba(0,0,0,0.15);cursor:pointer}
+.btn-card img{width:48px;height:48px;display:block;margin:0 auto 8px}
+.h1logo{font-family: 'Arial';font-weight:700;}
+</style>
 </head>
-<body>
-    <img src="ico/logo.png" alt="Logo iRevive" class="logo"> <!-- Tu logo 'i' -->
-    <h1>Biblioteca iRevive</h1>
-    <div class="botones">
-        <button onclick="window.location.href='mangas.html'">Mangas</button>
-        <button onclick="window.location.href='libros.html'">Libros</button>
+<body class="theme-day">
+<nav id="mainNav" class="nav-hamburger" aria-hidden="true">
+  <div class="nav-header">
+    <div class="logo">
+      <img src="icons/logo.png" alt="iRevive logo" onerror="this.style.display='none'">
+      <span class="logo-fallback">i</span>
     </div>
+    <button id="themeToggle" class="icon-btn" aria-label="Cambiar tema">☀️</button>
+  </div>
+  <div class="nav-search">
+    <input id="globalSearch" type="search" placeholder="Buscar..." aria-label="Buscar">
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Menú</a></li>
+    <li><a href="libros.html">Libros</a></li>
+    <li><a href="mangas.html">Mangas</a></li>
+    <li><a href="spotify.html">Spotify</a></li>
+    <li><a href="youtube.html">YouTube</a></li>
+  </ul>
+</nav>
+
+<header class="topbar">
+  <button id="hamburger" class="icon-btn" aria-label="Abrir menú">≡</button>
+  <h1 class="h1logo">iRevive</h1>
+  <a href="#" id="addHome" class="icon-btn" title="Añadir a pantalla de inicio">☆</a>
+</header>
+
+<main class="main-grid" role="main">
+  <section class="menu-buttons" aria-label="Opciones principales">
+    <div class="btn-card" data-href="libros.html" tabindex="0" role="button">
+      <img src="icons/icon-libro1.png" alt="Libros">
+      <div>Libros</div>
+    </div>
+    <div class="btn-card" data-href="mangas.html" tabindex="0" role="button">
+      <img src="icons/icon-manga1.png" alt="Mangas">
+      <div>Mangas</div>
+    </div>
+    <div class="btn-card" data-href="spotify.html" tabindex="0" role="button">
+      <img src="icons/spotify.png" alt="Spotify">
+      <div>Spotify</div>
+    </div>
+    <div class="btn-card" data-href="youtube.html" tabindex="0" role="button">
+      <img src="icons/youtube.png" alt="YouTube">
+      <div>YouTube</div>
+    </div>
+  </section>
+
+  <section class="tips">
+    <p>Consejos: toca largo para opciones, arrastra en lectores para pasar páginas. Modo noche disponible en el menú.</p>
+  </section>
+</main>
+
+<footer class="footer">iRevive • offline-friendly • estilo retro</footer>
+
+<script src="js/app.js"></script>
 </body>
 </html>
